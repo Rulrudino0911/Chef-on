@@ -10,8 +10,10 @@ class ChefOnApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: "Jalnan",
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
       home: const LoginPage(),
     );
@@ -25,33 +27,50 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // 상단 이미지 요소
           Container(
-            height: 200,
+            height: 400,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/your_image.png'), // 이미지 경로 설정
+                image: AssetImage('assets/images/welcom_page_graphic.png'), // 이미지 경로 설정 
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const Center(
-            child: Text(
-              'Chef On!',
+          const Padding(
+            padding: EdgeInsets.only(left:40),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+              'Chef ON!',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+                fontSize: 30,
               ),
             ),
           ),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 40),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "This is a sample text this is a sample text\nThis is a sample text this is a sample text",
+              style: TextStyle(
+                color: Color.fromARGB(140, 255, 255, 255),
+                fontSize: 9,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 16),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(40),
             child: Column(
               children: [
-                ElevatedButton(
+                ElevatedButton( //sign up button
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -63,18 +82,18 @@ class LoginPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 100),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
                   ),
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                   ),
                 ),
                 const SizedBox(height: 16),
-                OutlinedButton(
+                OutlinedButton( //sign in button
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -86,13 +105,13 @@ class LoginPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 100),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
                   ),
                   child: const Text(
                     'Sign In',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 15,
                     ),
                   ),
                 ),
@@ -112,50 +131,85 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 40),
-            const Text(
-              'Hello!',
-              style: TextStyle(fontSize: 36, color: Colors.white),
+            Align(
+            alignment: Alignment.centerLeft, // 왼쪽 정렬
+            child: IconButton(
+              icon: const Icon(
+                Icons.chevron_left,
+                color: Color.fromARGB(100, 255, 255, 255),
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.pop(context); // 이전 페이지로 이동
+              },
+            ),
+          ),
+            const SizedBox(height: 60),
+            const Align(
+              alignment: Alignment.centerLeft, 
+              child: Text(
+                'Hello!',
+                style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 255, 255, 255)),
+              ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'Create account and sign in',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Create account and sign in',
+                style: TextStyle(fontSize: 10, color: Color.fromARGB(160, 255, 255, 255)),
+              ),
             ),
             const SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Name',
+                labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(160, 255, 255, 255)),
                 filled: true,
                 fillColor: const Color(0xFF3F3F3F),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                contentPadding: const EdgeInsets.all(15)
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 12),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
+                labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(160, 255, 255, 255)),
                 filled: true,
                 fillColor: const Color(0xFF3F3F3F),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                contentPadding: const EdgeInsets.all(15)
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 12),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
+                labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(160, 255, 255, 255)),
                 filled: true,
                 fillColor: const Color(0xFF3F3F3F),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                contentPadding: const EdgeInsets.all(15)
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 50),
+
+            //Register Botton
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                fixedSize: const Size(500, 47),
+                backgroundColor: const Color(0xFFFF5656),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)
+                ),
+              ),
               onPressed: () {
                 // Register action here
                 Navigator.push(
@@ -163,7 +217,8 @@ class SignUpPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
-              child: const Text('Register'),
+              child: const Text('Register',
+                style: TextStyle(fontSize: 12, color: Color.fromARGB(255, 255, 255, 255),))
             ),
             const SizedBox(height: 10),
             Row(
@@ -171,7 +226,7 @@ class SignUpPage extends StatelessWidget {
               children: [
                 const Text(
                   'Have an account? ',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 255, 255, 255)),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -179,7 +234,7 @@ class SignUpPage extends StatelessWidget {
                   },
                   child: const Text(
                     'Sign In',
-                    style: TextStyle(color: Color(0xFFFF5656)),
+                    style: TextStyle(fontSize: 12, color: Color(0xFFFF5656)),
                   ),
                 ),
               ],
@@ -198,43 +253,71 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 40),
-            const Text(
-              'Welcome Back!',
-              style: TextStyle(fontSize: 36, color: Colors.white),
+            Align(
+            alignment: Alignment.centerLeft, // 왼쪽 정렬
+            child: IconButton(
+              icon: const Icon(
+                Icons.chevron_left,
+                color: Color.fromARGB(100, 255, 255, 255),
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.pop(context); // 이전 페이지로 이동
+              },
             ),
+          ),
+            const SizedBox(height: 20),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+              'Welcome\nBack!',
+              style: TextStyle(fontSize: 30, color: Colors.white, height: 1),
+              ),
+            ),
+            
             const SizedBox(height: 10),
-            const Text(
-              'Sign in to your account',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Sign in to your account',
+                style: TextStyle(fontSize: 10, color: Colors.grey),
+              ),
             ),
             const SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
+                labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(255, 255, 255, 255)),
                 filled: true,
                 fillColor: const Color(0xFF3F3F3F),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                contentPadding: const EdgeInsets.all(15)
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 12),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
+                labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(255, 255, 255, 255)),
                 filled: true,
                 fillColor: const Color(0xFF3F3F3F),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                contentPadding: const EdgeInsets.all(15)
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Forget Password?',
-              style: TextStyle(color: Colors.grey),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Forget Password?',
+                style: TextStyle(fontSize: 12, color: Color(0xFFFF5656)),
+              ),
             ),
             const SizedBox(height: 40),
             ElevatedButton(

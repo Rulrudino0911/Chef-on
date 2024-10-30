@@ -57,7 +57,7 @@ class LoginPage extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "This is a sample text this is a sample text\nThis is a sample text this is a sample text",
+              "수수수 수퍼노바 사건은 다가와 ㅇ어ㅗ어어에 \n거세가 커져가 어어어에\n질문은 계속데 어어어에 수수수부퍼노바",
               style: TextStyle(
                 color: Color.fromARGB(140, 255, 255, 255),
                 fontSize: 9,
@@ -316,11 +316,18 @@ class SignInPage extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Forget Password?',
-                style: TextStyle(fontSize: 12, color: Color(0xFFFF5656)),
+                style: TextStyle(fontSize: 10, color: Color(0xFFFF5656)),
               ),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                fixedSize: const Size(500, 47),
+                backgroundColor: const Color(0xFFFF5656),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)
+                ),
+              ),
               onPressed: () {
                 // Sign in action here
                 Navigator.push(
@@ -328,7 +335,7 @@ class SignInPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
-              child: const Text('Sign In'),
+              child: const Text('Sign In', style: TextStyle(fontSize: 12, color: Color.fromRGBO(255, 255, 255, 1),)),
             ),
             const SizedBox(height: 10),
             Row(
@@ -336,7 +343,7 @@ class SignInPage extends StatelessWidget {
               children: [
                 const Text(
                   "Don't Have an account? ",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(fontSize: 10, color: Colors.white),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -347,7 +354,7 @@ class SignInPage extends StatelessWidget {
                   },
                   child: const Text(
                     'Sign Up',
-                    style: TextStyle(color: Color(0xFFFF5656)),
+                    style: TextStyle(fontSize: 12, color: Color(0xFFFF5656)),
                   ),
                 ),
               ],
@@ -375,33 +382,44 @@ class HomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    shape: BoxShape.circle,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.dehaze,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context); //임시로 달아 둠 나중에 모션 수정 바람
+                    },
                   ),
-                  child: const Center(child: Text('三', style: TextStyle(fontSize: 20, color: Colors.white))), // 한자 三 디자인
                 ),
               ],
             ),
           ),
           // 검색창
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(left: 30),
             child: Row(
               children: [
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFF3F3F3F),
-                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xFFF5F5F5),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                     child: const TextField(
                       decoration: InputDecoration(
-                        hintText: 'Search...',
-                        hintStyle: TextStyle(color: Colors.grey),
+                        suffixIcon: 
+                          IconButton(
+                              icon: Icon(
+                              Icons.search,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              size: 25,
+                            ),
+                            onPressed: null //나중에 추가 바람
+                          ),
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                       ),
@@ -409,12 +427,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Container(
-                  width: 50,
-                  height: 50,
-                  color: Colors.black,
-                  child: const Icon(Icons.search, color: Colors.white),
-                ),
               ],
             ),
           ),

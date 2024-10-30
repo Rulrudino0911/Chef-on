@@ -1,3 +1,4 @@
+import 'package:chef_on/userpage/signin.dart';
 import 'package:flutter/material.dart';
 
 import 'mainpage.dart';
@@ -109,6 +110,7 @@ class SignUpPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
                   },
                   child: const Text(
                     'Sign In',

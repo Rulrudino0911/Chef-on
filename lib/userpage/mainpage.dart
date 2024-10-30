@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 // Home 페이지
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,13 +128,13 @@ class HomePage extends StatelessWidget {
           ),
           // 음식 버튼들 (가로 스크롤 가능)
           SizedBox(
-            height: 100, // 높이 조정
+            height: 200, // 높이 조정
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10, // 음식 요소 개수 증가
               itemBuilder: (context, index) {
                 return Container(
-                  width: 100,
+                  width: 200,
                   margin: const EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
                     color: Colors.grey,
@@ -144,20 +156,23 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          // Recommand 버튼들 (세로 정렬)
-          Column(
-            children: List.generate(3, (index) {
-              return Container(
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFD9D9D9), // 연한 회색
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(child: Text('Recommand ${index + 1}', style: const TextStyle(color: Colors.white))),
-              );
-            }),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext cxt, int idx) {
+                return Container(
+                  width: double.infinity,
+                  height: 120,
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFD9D9D9), // 연한 회색
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(child: Text('Recommand ${idx + 1}', style: const TextStyle(color: Colors.white))),
+                );
+              },
+            )
           ),
         ],
       ),

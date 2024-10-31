@@ -1,4 +1,10 @@
+import 'dart:io';
+import 'package:chef_on/cooking/cookingInfo.dart';
+import 'package:chef_on/factor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:chef_on/factor.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 // Home 페이지
@@ -14,6 +20,34 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  Future<int> checkExists() async { //파일 읽고 쓰는부분 // 건들지않는게 좋음
+
+    var innerDic = await getApplicationDocumentsDirectory();
+    bool c = await File("${innerDic.path}/MyFood.txt").exists();
+    if(c == false) {
+      var readList = await rootBundle.loadString("assets/txt/MyFood.txt");
+      File("${innerDic.path}/MyFood.txt").create();
+      File("${innerDic.path}/MyFood.txt").writeAsStringSync(readList);
+    }
+
+    var readlist = await File("${innerDic.path}/MyFood.txt").readAsLines();
+    for(String l in readlist) {
+      bool isExist = await File("${innerDic.path}/$l").exists();
+      debugPrint(isExist.toString());
+      if(isExist == false) {
+        var c = await rootBundle.loadString("assets/txt/$l");
+        debugPrint(c);
+        File("${innerDic.path}/$l").create();
+        File("${innerDic.path}/$l").writeAsStringSync(c);
+      }
+
+      var r = await File("${innerDic.path}/$l").readAsLines();
+      debugPrint(r.toString());
+      Myfood.add(FoodList(label : l,name: r[0], imgPath: r[3], FPath: "${innerDic.path}/$l",ExMin: r[2],ExTem: r[1]));
+    }
+    return 123;
   }
 
   @override
@@ -36,9 +70,7 @@ class _HomePageState extends State<HomePage> {
                       color: Color.fromARGB(255, 0, 0, 0),
                       size: 30,
                     ),
-                    onPressed: () {
-                      Navigator.pop(context); //임시로 달아 둠 나중에 모션 수정 바람
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ],
@@ -93,7 +125,9 @@ class _HomePageState extends State<HomePage> {
                   child: const Text('All', style: TextStyle(color: Colors.white)), // 흰색 텍스트
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD9D9D9), // 연한 회색
                     shape: RoundedRectangleBorder(
@@ -101,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   child: const Text('Recommand', style: TextStyle(color: Colors.white)), // 흰색 텍스트
-                ),
+                ), //이거 위에 탭 recommand 임
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -129,21 +163,9 @@ class _HomePageState extends State<HomePage> {
           // 음식 버튼들 (가로 스크롤 가능)
           SizedBox(
             height: 200, // 높이 조정
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10, // 음식 요소 개수 증가
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 200,
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(child: Text('Food ${index + 1}', style: const TextStyle(color: Colors.white))),
-                );
-              },
-            ),
+            child: FutureBuilder(future: checkExists(), builder: (context, snapshot) {
+              return MyFoodWidget(snapshot: snapshot);
+            }),
           ),
           // Recommand 제목
           const Padding(
@@ -178,4 +200,57 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+class MyFoodWidget extends StatefulWidget {
+  var snapshot;
+  MyFoodWidget({required this.snapshot});
+
+  @override
+  State<MyFoodWidget> createState() => _MyFoodWidgetState();
+}
+
+class _MyFoodWidgetState extends State<MyFoodWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: Myfood.length, // 음식 요소 개수 증가
+      itemBuilder: (context, index) {
+        return GestureDetector(
+            onTap: () {
+              if(widget.snapshot.hasData) {
+                setState(() {
+                  Myfood.insert(0, Myfood[index]);
+                  Myfood.removeAt(index+1);
+                  debugPrint(Myfood.length.toString());
+                });
+                reSaveList();
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Info()));
+              }
+            },
+            child:  Container(
+              width: 200,
+              margin: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(child: Text(widget.snapshot.hasData ? '${Myfood[index].name}' : 'food', style: const TextStyle(color: Colors.white))),
+            )
+        );
+      },
+    );
+  }
+}
+
+
+void reSaveList() async{ //이것도 저장기능이니 건들지마셈
+  var innerDic = await getApplicationDocumentsDirectory();
+
+
+  String saveT = "";
+  for(var str in Myfood) {
+    saveT += "${str.label}\n";
+  }
+  File("${innerDic.path}/MyFood.txt").writeAsString(saveT);
 }

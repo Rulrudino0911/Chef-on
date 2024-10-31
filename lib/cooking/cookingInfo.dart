@@ -1,3 +1,5 @@
+import 'package:chef_on/cooking/before.dart';
+import 'package:chef_on/factor.dart';
 import 'package:flutter/material.dart';
 
 class Info extends StatelessWidget {
@@ -34,14 +36,14 @@ class Info extends StatelessWidget {
               Row(
                 children: [
                   SizedBox(width: 50),
-                  Text("계란 후라이",style: TextStyle(fontSize: 60)),
+                  Text(Myfood[0].name,style: TextStyle(fontSize: 60)),
                 ],
               ),
               SizedBox(height: 10),
               Row(
                 children: [
                   SizedBox(width: 50),
-                  Text("그냥 계란후라이입니다.",style: TextStyle(fontSize: 25),),
+                  Text("그냥 ${Myfood[0].name}입니다.",style: TextStyle(fontSize: 25),),
                 ],
               ),
               SizedBox(height: 50,),
@@ -52,7 +54,7 @@ class Info extends StatelessWidget {
                     child: Row(
                       children: [
                         Icon(Icons.thermostat,size: 50,),
-                        Text("50°C",style: TextStyle(fontSize: 30),)
+                        Text("${Myfood[0].ExTem}°C",style: TextStyle(fontSize: 30),)
                       ],
                     ),
                   ),
@@ -61,7 +63,7 @@ class Info extends StatelessWidget {
                     child: Row(
                       children: [
                         Icon(Icons.watch_later_rounded,size: 50,),
-                        Text("50m",style: TextStyle(fontSize: 30))
+                        Text("${Myfood[0].ExMin}m",style: TextStyle(fontSize: 30))
                       ],
                     ),
                   ),
@@ -76,7 +78,9 @@ class Info extends StatelessWidget {
                     SizedBox(width: screenSize.width-300),
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Cooking()));
+                        },
                         child: Container(
                             width: 300,
                             height: double.infinity,
@@ -98,7 +102,7 @@ class Info extends StatelessWidget {
           Row(
             children: [
               SizedBox(width: 180),
-              Expanded(child: Image.asset("assets/images/FriedEgg.png",fit: BoxFit.fill))
+              Expanded(child: Image.asset(Myfood[0].imgPath,fit: BoxFit.fill))
             ],
           )
         ],

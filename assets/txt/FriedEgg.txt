@@ -1,0 +1,12 @@
+계란 후라이
+60
+90
+assets/images/FriedEgg.png
+팬 온도 50도(권장)로 조정합니다.
+tem 50
+달걀을 올립니다.
+btn
+5분간 굽습니다.
+wait 5
+완성!
+end

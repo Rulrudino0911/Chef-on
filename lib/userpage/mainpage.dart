@@ -245,8 +245,10 @@ class _MyFoodWidgetState extends State<MyFoodWidget> {
 
 
 void reSaveList() async{ //이것도 저장기능이니 건들지마셈
-  var innerDic = await getApplicationDocumentsDirectory();
 
+  var innerDic = await getApplicationDocumentsDirectory();
+  File("${innerDic.path}/MyFood.txt").delete();
+  File("${innerDic.path}/MyFood.txt").create();
 
   String saveT = "";
   for(var str in Myfood) {

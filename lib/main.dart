@@ -33,10 +33,10 @@ class LoginPage extends StatelessWidget {
         children: [
           // 상단 이미지 요소
           Container(
-            height: 400,
+            height: 500,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/welcom_page_graphic.png'), // 이미지 경로 설정 
+                image: AssetImage('assets/images/welcome_page_graphic.png'), // 이미지 경로 설정 
                 fit: BoxFit.cover,
               ),
             ),
@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
               'Chef ON!',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 30,
+                fontSize: 50,
               ),
             ),
           ),
@@ -59,10 +59,11 @@ class LoginPage extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "수수수 수퍼노바 사건은 다가와 ㅇ어ㅗ어어에 \n거세가 커져가 어어어에\n질문은 계속데 어어어에 수수수부퍼노바",
+              "따뜻한 마음으로 요리해 드릴게요:)\n세프온에서 사용자 여러분의 시작을 응원합니다",
               style: TextStyle(
                 color: Color.fromARGB(140, 255, 255, 255),
-                fontSize: 9,
+                fontSize: 15,
+                height: 2,
               ),
             ),
           ),
@@ -80,17 +81,17 @@ class LoginPage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFF5656),
+                    backgroundColor: const Color(0xFFF8BC59),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 150),
                   ),
                   child: const Text(
-                    'Sign Up',
+                    '회원가입',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+                      color: Colors.black,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -107,13 +108,13 @@ class LoginPage extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(35),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 150),
                   ),
                   child: const Text(
-                    'Sign In',
+                    '로그인',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 20,
                     ),
                   ),
                 ),

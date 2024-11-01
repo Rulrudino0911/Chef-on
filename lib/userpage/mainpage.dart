@@ -217,26 +217,42 @@ class _MyFoodWidgetState extends State<MyFoodWidget> {
       itemCount: Myfood.length, // 음식 요소 개수 증가
       itemBuilder: (context, index) {
         return GestureDetector(
-            onTap: () {
-              if(widget.snapshot.hasData) {
-                setState(() {
-                  Myfood.insert(0, Myfood[index]);
-                  Myfood.removeAt(index+1);
-                  debugPrint(Myfood.length.toString());
-                });
-                reSaveList();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Info()));
-              }
-            },
-            child:  Container(
-              width: 200,
-              margin: const EdgeInsets.symmetric(horizontal: 8),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(child: Text(widget.snapshot.hasData ? '${Myfood[index].name}' : 'food', style: const TextStyle(color: Colors.white))),
-            )
+          onTap: () {
+            if(widget.snapshot.hasData) {
+              setState(() {
+                Myfood.insert(0, Myfood[index]);
+                Myfood.removeAt(index+1);
+                debugPrint(Myfood.length.toString());
+              });
+              reSaveList();
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Info()));
+            }
+          },
+          child:  Container(
+            width: 200,
+            margin: const EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  Myfood[index].imgPath,
+                  fit: BoxFit.cover,
+                  width: 200, // Container 너비에 맞추어 이미지 크기를 조정
+                ),
+                Center(
+                  child: Text(
+                    widget.snapshot.hasData ? '${Myfood[index].name}' : 'food',
+                    style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  )
+                ),
+              ],
+            ),
+          ),
         );
       },
     );

@@ -15,15 +15,15 @@ class ChefOnApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: ListView(children: const [
-          Cooking(),
+          realFinish(),
         ]),
       ),
     );
   }
 }
 
-class Cooking extends StatelessWidget {
-  const Cooking({super.key});
+class realFinish extends StatelessWidget {
+  const realFinish({super.key});
 
   @override
   Widget build(BuildContext context) {

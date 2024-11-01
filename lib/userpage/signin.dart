@@ -29,12 +29,12 @@ class SignInPage extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 60),
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Welcome\nBack!',
-                style: TextStyle(fontSize: 30, color: Colors.white, height: 1),
+                '다시 만나서\n반가워요:)',
+                style: TextStyle(fontSize: 40, color: Colors.white, height: 1.2),
               ),
             ),
 
@@ -42,48 +42,51 @@ class SignInPage extends StatelessWidget {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Sign in to your account',
-                style: TextStyle(fontSize: 10, color: Colors.grey),
+                '계정을 로그인 해주세요',
+                style: TextStyle(fontSize: 15, color: Colors.grey),
               ),
             ),
             const SizedBox(height: 40),
             TextField(
               decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(255, 255, 255, 255)),
+                  labelText: '이메일',
+                  labelStyle: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 255, 255, 255)),
                   filled: true,
                   fillColor: const Color(0xFF3F3F3F),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                  contentPadding: const EdgeInsets.all(15)
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                  contentPadding: const EdgeInsets.all(23)
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 18),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  labelText: 'Password',
-                  labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(255, 255, 255, 255)),
+                  labelText: '비밀번호',
+                  labelStyle: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 255, 255, 255)),
                   filled: true,
                   fillColor: const Color(0xFF3F3F3F),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                  contentPadding: const EdgeInsets.all(15)
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                  contentPadding: const EdgeInsets.all(23)
               ),
             ),
             const SizedBox(height: 20),
             const Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                'Forget Password?',
-                style: TextStyle(fontSize: 10, color: Color(0xFFFF5656)),
+              child :Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Text(
+                  '비밀번호를 잊으셨나요?',
+                  style: TextStyle(fontSize: 15, color: Color(0xffff8bc59)),
+                ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 70),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: const Size(500, 47),
-                backgroundColor: const Color(0xFFFF5656),
+                fixedSize: const Size(400, 70),
+                backgroundColor: const Color(0xffff8bc59),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)
+                    borderRadius: BorderRadius.circular(50)
                 ),
               ),
               onPressed: () {
@@ -93,15 +96,15 @@ class SignInPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
-              child: const Text('Sign In', style: TextStyle(fontSize: 12, color: Color.fromRGBO(255, 255, 255, 1),)),
+              child: const Text('로그인하기', style: TextStyle(fontSize: 18, color: Color.fromRGBO(255, 255, 255, 1),)),
             ),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  "Don't Have an account? ",
-                  style: TextStyle(fontSize: 10, color: Colors.white),
+                  "계정을 가지고 있지 않나요? ",
+                  style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -112,8 +115,8 @@ class SignInPage extends StatelessWidget {
                     );
                   },
                   child: const Text(
-                    'Sign Up',
-                    style: TextStyle(fontSize: 12, color: Color(0xFFFF5656)),
+                    '회원가입하기',
+                    style: TextStyle(fontSize: 18, color: Color(0xffff8bc59)),
                   ),
                 ),
               ],

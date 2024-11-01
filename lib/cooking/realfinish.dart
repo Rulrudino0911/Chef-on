@@ -193,7 +193,7 @@ class Cooking extends StatelessWidget {
               ),
               Positioned(
                 left: 180,
-                top: 560,
+                top: 570,
                 child: Container(
                   width: 110,
                   height: 110,
@@ -207,7 +207,7 @@ class Cooking extends StatelessWidget {
               ),
               Positioned(
                 left: 250,
-                top: 545,
+                top: 555,
                 child: Container(
                   width: 115,
                   height: 115,
@@ -221,7 +221,7 @@ class Cooking extends StatelessWidget {
               ),
               Positioned(
                 left: 320,
-                top: 560,
+                top: 570,
                 child: Container(
                   width: 110,
                   height: 110,
@@ -235,7 +235,7 @@ class Cooking extends StatelessWidget {
               ),
               Positioned(
                 left: 205,
-                top: 630,
+                top: 640,
                 child: Container(
                   width: 200,
                   height: 150,
@@ -249,7 +249,7 @@ class Cooking extends StatelessWidget {
               ),
               Positioned(
                 left: 205,
-                top: 750,
+                top: 760,
                 child: Container(
                   width: 200,
                   height: 30,

@@ -1,5 +1,7 @@
-EggFly.txt
+Curry.txt
 FriedEgg.txt
-FriedEgg.txt
-EggFried.txt
-FriedEgg.txt
+FriedRice.txt
+Kimchi.txt
+Omurice.txt
+Ramen.txt
+Spam.txt

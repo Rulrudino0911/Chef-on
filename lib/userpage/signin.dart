@@ -11,7 +11,7 @@ class SignInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(40),
+        padding: const EdgeInsets.all(60),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,7 +96,8 @@ class SignInPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               },
-              child: const Text('로그인하기', style: TextStyle(fontSize: 18, color: Color.fromRGBO(255, 255, 255, 1),)),
+              child: const Text('로그인하기', style: TextStyle(fontSize: 18, color: Color.fromRGBO(
+                  0, 0, 0, 1.0),)),
             ),
             const SizedBox(height: 10),
             Row(

@@ -1,7 +1,7 @@
-후라이 계란
+계란 볶음밥
 90
 60
-assets/images/FriedEgg.png
+assets/images/main_FriedRice.png
 팬 온도 80도(권장)로 조정합니다.
 t 80
 5분간 굽습니다.

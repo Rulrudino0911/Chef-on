@@ -1,7 +1,7 @@
-계란 후라이
+라면
 60
 90
-assets/images/main_FriedEgg.png
+assets/images/main_Ramen.png
 팬 온도 50도(권장)로 조정합니다.
 t 50
 달걀을 올립니다.

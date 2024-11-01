@@ -10,7 +10,7 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(40),
+        padding: const EdgeInsets.all(60),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,61 +32,65 @@ class SignUpPage extends StatelessWidget {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Hello!',
-                style: TextStyle(fontSize: 30, color: Color.fromARGB(255, 255, 255, 255)),
+                '반가워요!',
+                style: TextStyle(fontSize: 40, color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 7),
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Create account and sign in',
-                style: TextStyle(fontSize: 10, color: Color.fromARGB(160, 255, 255, 255)),
+                '회원가입과 로그인을 해주세요',
+                style: TextStyle(fontSize: 15, color: Color.fromARGB(160, 255, 255, 255)),
               ),
             ),
-            const SizedBox(height: 40),
-            TextField(
+            const SizedBox(height: 60),
+            Container(
+              child: Flexible(
+                child: TextField(
               decoration: InputDecoration(
-                  labelText: 'Name',
-                  labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(160, 255, 255, 255)),
+                  labelText: '이름',
+                  labelStyle: const TextStyle(fontSize: 18, color: Color.fromARGB(160, 255, 255, 255)),
                   filled: true,
                   fillColor: const Color(0xFF3F3F3F),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                  contentPadding: const EdgeInsets.all(15)
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                  contentPadding: const EdgeInsets.all(23)
+                  ),
+                ),
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 18),
             TextField(
               decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(160, 255, 255, 255)),
+                  labelText: '이메일',
+                  labelStyle: const TextStyle(fontSize: 18, color: Color.fromARGB(160, 255, 255, 255)),
                   filled: true,
                   fillColor: const Color(0xFF3F3F3F),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                  contentPadding: const EdgeInsets.all(15)
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                  contentPadding: const EdgeInsets.all(23)
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 18),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  labelText: 'Password',
-                  labelStyle: const TextStyle(fontSize: 11, color: Color.fromARGB(160, 255, 255, 255)),
+                  labelText: '비밀번호',
+                  labelStyle: const TextStyle(fontSize: 18, color: Color.fromARGB(160, 255, 255, 255)),
                   filled: true,
                   fillColor: const Color(0xFF3F3F3F),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                  contentPadding: const EdgeInsets.all(15)
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                  contentPadding: const EdgeInsets.all(23)
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 70),
 
             //Register Botton
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(500, 47),
-                  backgroundColor: const Color(0xFFFF5656),
+                  fixedSize: const Size(400, 70),
+                  backgroundColor: const Color(0xffff8bc59),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)
+                      borderRadius: BorderRadius.circular(50)
                   ),
                 ),
                 onPressed: () {
@@ -96,16 +100,16 @@ class SignUpPage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const HomePage()),
                   );
                 },
-                child: const Text('Register',
-                    style: TextStyle(fontSize: 12, color: Color.fromARGB(255, 255, 255, 255),))
+                child: const Text('등록하기',
+                    style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0),))
             ),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Have an account? ',
-                  style: TextStyle(fontSize: 10, color: Color.fromARGB(255, 255, 255, 255)),
+                  '이미 계정이 있나요? ',
+                  style: TextStyle(fontSize: 15, color: Color.fromARGB(255, 255, 255, 255)),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -113,8 +117,8 @@ class SignUpPage extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => SignInPage()));
                   },
                   child: const Text(
-                    'Sign In',
-                    style: TextStyle(fontSize: 12, color: Color(0xFFFF5656)),
+                    '로그인하기',
+                    style: TextStyle(fontSize: 18, color: Color(0xFFF8BC59)),
                   ),
                 ),
               ],

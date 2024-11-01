@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
           ),
           // 검색창
           Padding(
-            padding: const EdgeInsets.only(left: 30),
+            padding: const EdgeInsets.only(left: 40),
             child: Row(
               children: [
                 Expanded(
@@ -104,11 +104,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 50),
               ],
             ),
           ),
           // 버튼들
+          const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
@@ -117,12 +118,12 @@ class _HomePageState extends State<HomePage> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFF5656), // All 버튼 색상
+                    backgroundColor: const Color(0xFFF8BC59), // All 버튼 색상
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text('All', style: TextStyle(color: Colors.white)), // 흰색 텍스트
+                  child: const Text('전체', style: TextStyle(fontSize: 20, color: Colors.white)), // 흰색 텍스트
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -131,20 +132,20 @@ class _HomePageState extends State<HomePage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD9D9D9), // 연한 회색
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text('Recommand', style: TextStyle(color: Colors.white)), // 흰색 텍스트
+                  child: const Text('추천 요리', style: TextStyle(fontSize: 20, color: Colors.black)), // 흰색 텍스트
                 ), //이거 위에 탭 recommand 임
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD9D9D9), // 연한 회색
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text('', style: TextStyle(color: Colors.white)), // 흰색 텍스트
+                  child: const Text('조리 도구', style: TextStyle(fontSize: 20, color: Colors.black)), // 흰색 텍스트
                 ),
               ],
             ),
@@ -155,7 +156,7 @@ class _HomePageState extends State<HomePage> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'My Food',
+                '내 요리',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
               ),
             ),
@@ -173,7 +174,7 @@ class _HomePageState extends State<HomePage> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Recommand',
+                '추천 요리',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
               ),
             ),
@@ -185,11 +186,11 @@ class _HomePageState extends State<HomePage> {
                 return Container(
                   width: double.infinity,
                   height: 120,
-                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 40),
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   decoration: BoxDecoration(
                     color: const Color(0xFFD9D9D9), // 연한 회색
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(child: Text('Recommand ${idx + 1}', style: const TextStyle(color: Colors.white))),
                 );
@@ -211,8 +212,8 @@ class MyFoodWidget extends StatefulWidget {
 
 class _MyFoodWidgetState extends State<MyFoodWidget> {
   @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
+  Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(left: 40),
+    child: ListView.builder(
       scrollDirection: Axis.horizontal,
       itemCount: Myfood.length, // 음식 요소 개수 증가
       itemBuilder: (context, index) {
@@ -226,14 +227,13 @@ class _MyFoodWidgetState extends State<MyFoodWidget> {
               });
               reSaveList();
               Navigator.push(context, MaterialPageRoute(builder: (context) => Info()));
-            }
-          },
-          child:  Container(
-            width: 200,
+            }},
+          child: Container(
+            width: 180,
             margin: const EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(10),
+              color: const Color(0xFFF8BC59),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Stack(
               alignment: Alignment.center,
@@ -241,22 +241,20 @@ class _MyFoodWidgetState extends State<MyFoodWidget> {
                 Image.asset(
                   Myfood[index].imgPath,
                   fit: BoxFit.cover,
-                  width: 200, // Container 너비에 맞추어 이미지 크기를 조정
+                  width: 180, // Container 너비에 맞추어 이미지 크기를 조정
                 ),
-                Center(
-                  child: Text(
-                    widget.snapshot.hasData ? '${Myfood[index].name}' : 'food',
-                    style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  )
+                Center(child: Text(
+                  widget.snapshot.hasData ? '${Myfood[index].name}' : 'food',
+                  style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                )
                 ),
               ],
             ),
           ),
-        );
-      },
-    );
-  }
+        );},
+    ),
+  );
 }
 
 

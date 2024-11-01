@@ -89,7 +89,7 @@ class _CookingWidgetState extends State<CookingWidget> {
                   children: [
                     for(int i = 0;i<process.length;i++)
                       Text("과정 ${i+1}",style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 19,
                           color: Nowpros == i ? Colors.red : Colors.black
                         ),
                       )
@@ -104,17 +104,18 @@ class _CookingWidgetState extends State<CookingWidget> {
                         borderRadius: BorderRadius.only(topRight: Radius.circular(75),topLeft: Radius.circular(75)),
                         color: Colors.black
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        for(int i = 0;i<process.length;i++)
-                          Expanded(
-                            child: Container(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          for(int i = 0;i<process.length;i++)
+                            Container(
                               width: screenSize.width*0.9,
+                              height: 150,
                               decoration: BoxDecoration(
 
-                                  color: i == Nowpros ? Colors.red : Colors.black,
-                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(50),bottomLeft: Radius.circular(50)),
+                                color: i == Nowpros ? Colors.red : Colors.black,
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(50),bottomLeft: Radius.circular(50)),
                               ),
                               child: Center(
                                 child: Text("${i+1} : " + process[i].keys.first.toString(),
@@ -125,10 +126,9 @@ class _CookingWidgetState extends State<CookingWidget> {
                                 ),
                               ),
                             ),
-                          )
-                      ],
-                    )
-                    ,
+                        ],
+                      ),
+                    ),
                   )
                 ),
 
